@@ -8,7 +8,7 @@ const INVITATION = {
     bride: "කසුනි",
     groom: "සචිර",
     brideFull: "කසුනි පෙරේරා",
-    groomFull: "සචිර අදස්සූරිය",
+    groomFull: "සචිර අඩස්සුරිය",
   },
   date: {
     displayNumeric: "13 . 01 . 2027",
@@ -35,7 +35,7 @@ const INVITATION = {
 
 const backgroundMusic = "/ssstik.io_1790155724397.mp3";
 const googleScriptUrl =
-  "https://script.google.com/macros/s/AKfycbwxIzEgbWhN1mIGbFiI4YIKGqa4S5dylwrDaNkoMZVkUzEmhES9QVqDm2YIgXo3sepF/exec";
+  "https://script.google.com/macros/s/AKfycbxDGwNwOKyfwZ73x6NsgzhNgOG5mEX4z9dKM1Kqt7V53z_Rw7RGocufZkhG8a-VRW-r/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 const preImagePath = (fileName: string) => `/pre/${fileName.replaceAll(" ", "%20")}`;
@@ -272,7 +272,7 @@ export default function WeddingInvitation() {
   const guestName = readGuestName();
 
   const [rsvpForm, setRsvpForm] = useState({
-    name: "",
+    name: guestName ?? "",
     guests: "1",
   });
 
@@ -293,6 +293,11 @@ export default function WeddingInvitation() {
 
     if (!response.ok) {
       throw new Error("b,a,Su id¾:l fkdùh");
+    }
+
+    const result = await response.json().catch(() => null);
+    if (result && result.ok === false) {
+      throw new Error(result.message || "RSVP not saved");
     }
   };
 
@@ -315,7 +320,7 @@ export default function WeddingInvitation() {
       });
 
       setRsvpStatus("success");
-      setRsvpForm({ name: "", guests: "1" });
+      setRsvpForm({ name: guestName ?? "", guests: "1" });
     } catch {
       setRsvpStatus("error");
     }
@@ -601,16 +606,16 @@ export default function WeddingInvitation() {
                   </div>
                   <div className="flex flex-col items-center gap-3">
                     <p className="text-[0.95rem] leading-[1.8] sm:text-base text-[#5A4A33] whitespace-pre-line text-center" style={{ fontFamily: "'Noto Sans Sinhala', sans-serif" }}>
-                      {lang === 'si' ? `චන්ද්‍රසේන අදස්සූරිය මහතා සහ
-                      මහත්මිය
+                      {lang === 'si' ? `චන්ද්‍රසේන අඩස්සුරිය මහතා සහ
+                      චෙස්ට්‍රා අඩස්සුරිය මහත්මිය
                       යන දෙපළගේ
                       ආදරණීය පුත්‍රයා` : `Loving son of
-                      Mr. & Mrs.
-                      Chandrasena Adassuriya`}
+                      Mr. Chandrasena Adassuriya &
+                      Mrs. Chestra Adassuriya`}
                     </p>
-                    <p className="mt-auto" aria-label="සචිර අදස්සූරිය">
+                    <p className="mt-auto" aria-label="සචිර අඩස්සුරිය">
                       <span aria-hidden="true" className={lang === "si" ? "font-nimsara block text-center" : "font-english-title tracking-wide block text-center"} style={{ fontVariantLigatures: "none", color: "#8C6420", fontSize: "clamp(1.4rem,4.2vw,2rem)", lineHeight: 1.15 }}>
-                        {lang === 'si' ? 'iÑr woiaiQßh' : 'Sachira Adassuriya'}
+                        {lang === 'si' ? 'iÑr wviaiqßh' : 'Sachira Adassuriya'}
                       </span>
                     </p>
                   </div>
@@ -874,42 +879,6 @@ export default function WeddingInvitation() {
                     </div>
                   </div>
                   
-                  {rsvpForm.guests !== "0" && (
-                    <div className="mb-5">
-                      <p className="mb-2.5 text-[0.9rem]" style={{ fontFamily: `'Noto Sans Sinhala', ${lang === 'en' ? "'Cormorant Garamond'" : "'Abhaya Libre'"}, serif`, fontWeight: 600, color: "#8C6420" }}>{lang === 'si' ? 'පැමිණෙන ගණන' : 'Number of Guests'}</p>
-                      <div className="flex items-center justify-center gap-6">
-                        <button 
-                          type="button" 
-                          onClick={() => {
-                            setRsvpForm(prev => {
-                              const current = parseInt(prev.guests) || 1;
-                              return { ...prev, guests: Math.max(1, current - 1).toString() };
-                            });
-                          }}
-                          className="grid h-11 w-11 place-items-center rounded-full text-xl transition-all hover:opacity-80 active:scale-90" 
-                          style={{ background: "rgba(185, 138, 47, 0.12)", color: "#8C6420", border: "1px solid rgba(185, 138, 47, 0.5)" }} 
-                          aria-label="Decrease guest count">
-                          -
-                        </button>
-                        <span className="leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: "#8C6420", fontSize: "2.6rem", minWidth: "3rem", textAlign: "center" }}>
-                          {parseInt(rsvpForm.guests) || 1}
-                        </span>
-                        <button 
-                          type="button" 
-                          onClick={() => {
-                            setRsvpForm(prev => {
-                              const current = parseInt(prev.guests) || 1;
-                              return { ...prev, guests: (current + 1).toString() };
-                            });
-                          }}
-                          className="grid h-11 w-11 place-items-center rounded-full text-xl transition-all hover:opacity-80 active:scale-90" 
-                          style={{ background: "rgba(185, 138, 47, 0.12)", color: "#8C6420", border: "1px solid rgba(185, 138, 47, 0.5)" }} 
-                          aria-label="Increase guest count">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  )}
                   
                   {(rsvpStatus === "success" || rsvpStatus === "error") && (
                     <p className={`text-xs text-center font-semibold mb-4 ${rsvpStatus === "success" ? "text-emerald-600" : "text-red-500"}`}>
