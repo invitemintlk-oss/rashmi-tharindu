@@ -518,7 +518,7 @@ export default function WeddingInvitation() {
               </div>
 
               <motion.img
-                src="/images/perahera.png"
+                src="/images/elephant-procession.webp"
                 alt=""
                 aria-hidden="true"
                 draggable="false"
