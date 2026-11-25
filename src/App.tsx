@@ -41,7 +41,7 @@ const CALENDAR_LINK =
   "&details=" + encodeURIComponent("පෝරුවේ චාරිත්‍රය පෙ.ව. 9.05 ට") +
   "&location=" + encodeURIComponent(INVITATION.venue.mapQuery);
 
-const backgroundMusic = "/ssstik.io_1790155724397.mp3";
+const backgroundMusic = "/jayamangala-gatha.mp3";
 // TODO: point this at the Google Apps Script deployment for this couple's RSVP sheet.
 const googleScriptUrl =
   "https://script.google.com/macros/s/AKfycbxDGwNwOKyfwZ73x6NsgzhNgOG5mEX4z9dKM1Kqt7V53z_Rw7RGocufZkhG8a-VRW-r/exec";
