@@ -46,7 +46,7 @@ async function copyText(text: string): Promise<boolean> {
 }
 
 export default function Admin() {
-  const [prefix, setPrefix] = useState<Prefix>('Mr.');
+  const [prefix, setPrefix] = useState<Prefix>('මහතා');
   const [guestName, setGuestName] = useState('');
   const [generated, setGenerated] = useState<{ displayName: string; url: string } | null>(null);
   const [history, setHistory] = useState<GeneratedLink[]>([]);
@@ -121,7 +121,7 @@ export default function Admin() {
               <span className="text-sm font-semibold text-stone-600">Guest Name</span>
               <input
                 type="text"
-                placeholder="e.g. Sanjaya"
+                placeholder="උදා: සුනිල් පෙරේරා"
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
                 className={inputCls + ' placeholder:text-stone-400'}
@@ -132,7 +132,7 @@ export default function Admin() {
 
           {liveDisplayName && (
             <p className="text-sm text-stone-500">
-              Greeting preview: <span className="font-semibold text-stone-800">Dear {liveDisplayName} ❤️</span>
+              Greeting preview: <span className="font-semibold text-stone-800">ආදරණීය {liveDisplayName} ❤️</span>
             </p>
           )}
 

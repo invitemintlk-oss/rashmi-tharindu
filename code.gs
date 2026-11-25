@@ -1,5 +1,5 @@
 /**
- * Kasuni & Sachira – Wedding RSVP Web App
+ * Rashmi & Tharindu – Wedding RSVP Web App
  *
  * Spreadsheet:
  * https://docs.google.com/spreadsheets/d/1IxfWTUftgHDtbd_4WhIZazGc7wuhpcc1M-T7XA6vU5A/edit
@@ -24,7 +24,7 @@ function doPost(e) {
 function doGet(e) {
   // Opening the web app URL in a browser with no params shows a health check.
   if (!e || !e.parameter || !e.parameter.action) {
-    return jsonResponse_({ ok: true, message: "Kasuni & Sachira RSVP service is running" });
+    return jsonResponse_({ ok: true, message: "Rashmi & Tharindu RSVP service is running" });
   }
   return handleRequest_(e);
 }

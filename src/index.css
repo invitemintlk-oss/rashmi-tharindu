@@ -29,7 +29,7 @@
 
   --color-sage: #87937a;
   /* Soft Sunset Red */
-  --color-paper: #fae9cb;
+  --color-paper: #ffffff;
 
   --color-theme-50: #fff5f2;
   --color-theme-100: #ffe8e1;
@@ -101,15 +101,41 @@ body {
 
 
 .website-shell {
-  background:
-    radial-gradient(circle at 10% 10%, rgba(45, 90, 39, 0.15), transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.1), transparent 40%),
-    radial-gradient(circle at 50% 20%, rgba(162, 197, 160, 0.2), transparent 50%),
-    linear-gradient(rgba(250, 233, 203, 0.7), rgba(250, 233, 203, 0.7)),
-    url('/vintage_paper.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  background: #ffffff;
+}
+
+/* Animated metallic gold text */
+.gold-shimmer {
+  background-image: linear-gradient(110deg, #9a7428 0%, #c29a45 25%, #f3e1a6 45%, #c29a45 60%, #8e6b22 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gold-sweep 6s ease-in-out infinite;
+}
+
+@keyframes gold-sweep {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+
+/* Soft ivory with a faint gold lattice */
+.gold-pattern {
+  background-color: #fcf9f1;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(184, 145, 58, 0.22) 1px, transparent 1.6px),
+    radial-gradient(circle at 50% 0%, rgba(233, 207, 140, 0.25), transparent 60%);
+  background-size: 22px 22px, 100% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-shimmer { animation: none; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .cv-auto {
@@ -127,8 +153,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-sage);
-  opacity: 0.3;
+  background: #c9a24a88;
   border-radius: 10px;
 }
 

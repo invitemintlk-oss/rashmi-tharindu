@@ -1,22 +1,22 @@
 export const COUPLE_EN = {
-  bride: "Kasuni",
-  groom: "Sachira",
+  bride: "රශ්මි",
+  groom: "තරිඳු",
 } as const;
 
-export const PREFIXES = ["Mr.", "Mrs.", "Miss", "Mr. & Mrs.", "Family", "Dear"] as const;
+export const PREFIXES = ["මහතා", "මහත්මිය", "මෙනවිය", "මහතා සහ මහත්මිය", "පවුලේ සැමට", "නම පමණක්"] as const;
 export type Prefix = (typeof PREFIXES)[number];
 
-/** Combine prefix + name. "Dear" adds nothing (the greeting already says Dear). */
+/** Combine name + Sinhala title (titles follow the name in Sinhala). */
 export function buildDisplayName(prefix: Prefix, name: string): string {
   const n = name.trim().replace(/\s+/g, " ");
   if (!n) return "";
   switch (prefix) {
-    case "Family":
-      return `${n} and Family`;
-    case "Dear":
+    case "පවුලේ සැමට":
+      return `${n} ඇතුළු පවුලේ සැමට`;
+    case "නම පමණක්":
       return n;
     default:
-      return `${prefix} ${n}`;
+      return `${n} ${prefix}`;
   }
 }
 
@@ -25,18 +25,22 @@ export function buildInviteLink(baseUrl: string, displayName: string): string {
 }
 
 export function buildInviteMessage(displayName: string, link: string): string {
-  return `Dear ${displayName} ❤️
+  return `ආදරණීය ${displayName} ❤️
 
-With joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.
+අපගේ ජීවිතයේ සුවිශේෂීම දිනය වන අපගේ විවාහ මංගල්‍යයට එක්වී අප හා සතුට බෙදා ගන්නා ලෙස ඔබට ආදරයෙන් ආරාධනා කරමු.
 
-Please view our wedding invitation and all the event details through the link below 🌐:
+📅 2027 මැයි 13 බ්‍රහස්පතින්දා
+💍 පෝරුවේ චාරිත්‍රය පෙ.ව. 9.05 ට
+📍 සින්ඩරෙල්ලා හොටෙල්, පරකඩුව, ඇහැලියගොඩ
+
+ආරාධනය සහ සියලු විස්තර පහත සබැඳියෙන් බලන්න 🌐:
 
 ${link}
 
-Your presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.
+ඔබගේ පැමිණීම අපට මහත් සතුටකි.
 
-With love,
-❤️ ${COUPLE_EN.groom} & ${COUPLE_EN.bride}`;
+ආදරයෙන්,
+❤️ ${COUPLE_EN.bride} සහ ${COUPLE_EN.groom}`;
 }
 
 /** Guest name from /{name} path, falling back to the older ?to= query. */
