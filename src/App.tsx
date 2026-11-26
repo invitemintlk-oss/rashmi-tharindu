@@ -570,8 +570,10 @@ export default function WeddingInvitation() {
                 <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-10">
                   {[INVITATION.bride, INVITATION.groom].map((p, i) => (
                     <div key={p.short} className="flex flex-col items-center gap-3">
-                      <p className="whitespace-pre-line text-[0.95rem] leading-[1.85] sm:text-base" style={{ color: "#5A4E3B" }}>
-                        {`${p.father}\nසහ\n${p.mother}\nයන දෙපළගේ\n${i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"}`}
+                      <p className="leading-[1.85]" style={{ color: "#5A4E3B", fontSize: "clamp(0.62rem,3.1vw,1rem)" }}>
+                        {[`${p.father} සහ`, p.mother, "යන දෙපළගේ", i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"].map((line) => (
+                          <span key={line} className="block whitespace-nowrap">{line}</span>
+                        ))}
                       </p>
                       <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(0.72rem,3.3vw,1.4rem)" }}>
                         {p.full.map((line) => (
