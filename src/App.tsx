@@ -6,13 +6,13 @@ import { readGuestName } from "./guest";
 const INVITATION = {
   bride: {
     short: "රශ්මි",
-    full: "රූපසිංහ යාපා රශ්මි රසාංජි",
+    full: ["රූපසිංහ යාපා", "රශ්මි රසාංජි"],
     father: "රූපසිංහ යාපා ගාමිණී ලාල් මහතා",
     mother: "යූ. රංජනී වීරසිංහ මහත්මිය",
   },
   groom: {
     short: "තරිඳු",
-    full: "සමරසිංහ හෙට්ටිආරච්චිලාගේ තරිඳු සම්පත් හෙට්ටිආරච්චි",
+    full: ["සමරසිංහ හෙට්ටිආරච්චිලාගේ", "තරිඳු සම්පත් හෙට්ටිආරච්චි"],
     father: "එස්. එච්. ගාමිනී මහතා",
     mother: "කේ. එල්. රංජනී මහත්මිය",
   },
@@ -567,14 +567,16 @@ export default function WeddingInvitation() {
                   සාදර ඇරයුමයි!
                 </h1>
 
-                <div className="mt-8 grid grid-cols-2 gap-5 sm:gap-10">
+                <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-10">
                   {[INVITATION.bride, INVITATION.groom].map((p, i) => (
                     <div key={p.short} className="flex flex-col items-center gap-3">
                       <p className="whitespace-pre-line text-[0.95rem] leading-[1.85] sm:text-base" style={{ color: "#5A4E3B" }}>
                         {`${p.father}\nසහ\n${p.mother}\nයන දෙපළගේ\n${i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"}`}
                       </p>
-                      <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(1.05rem,3.6vw,1.45rem)" }}>
-                        {p.full}
+                      <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(0.72rem,3.3vw,1.4rem)" }}>
+                        {p.full.map((line) => (
+                          <span key={line} className="block whitespace-nowrap">{line}</span>
+                        ))}
                       </p>
                     </div>
                   ))}
@@ -888,7 +890,14 @@ export default function WeddingInvitation() {
                   <div className="my-3.5" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 500, fontSize: "clamp(2.4rem,9vw,5rem)", lineHeight: 1, letterSpacing: "0.04em" }}>
                     13 . 05 . 27
                   </div>
-                  <div className="text-[1.6rem] font-extrabold">{INVITATION.bride.short} සහ {INVITATION.groom.short}</div>                  <Divider light />
+                  <div className="text-[1.6rem] font-extrabold">{INVITATION.bride.short} සහ {INVITATION.groom.short}</div>
+                  <Divider light />
+                  <p className="mt-10 text-xs tracking-wider opacity-90 transition-opacity hover:opacity-100" style={{ fontFamily: "'Montserrat', sans-serif", color: "#F6E7BE" }}>
+                    Want a beautiful wedding website like this? Create yours with{" "}
+                    <a target="_blank" rel="noreferrer" href="https://wa.me/94707819074" className="font-semibold text-white underline decoration-[#F6E7BE]/60 underline-offset-2 transition-colors hover:text-[#FFF6DC]">
+                      invitemint
+                    </a>
+                  </p>
                 </div>
               </div>
             </section>
