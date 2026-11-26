@@ -2,7 +2,7 @@
  * Rashmi & Tharindu – Wedding RSVP Web App
  *
  * Spreadsheet:
- * https://docs.google.com/spreadsheets/d/1IxfWTUftgHDtbd_4WhIZazGc7wuhpcc1M-T7XA6vU5A/edit
+ * https://docs.google.com/spreadsheets/d/1y5n2hmH70dJgB1xvfw_ZtWx2b9p6mxXW_96aZkw2RKo/edit
  *
  * Sheet (created automatically if missing):
  *   - RSVP : Timestamp | Name | Attendance
@@ -11,7 +11,7 @@
  *   action = "rsvp", name = "<guest name>", guests = "1" (attending) | "0" (not attending)
  */
 
-const SPREADSHEET_ID = "1IxfWTUftgHDtbd_4WhIZazGc7wuhpcc1M-T7XA6vU5A";
+const SPREADSHEET_ID = "1y5n2hmH70dJgB1xvfw_ZtWx2b9p6mxXW_96aZkw2RKo";
 const RSVP_SHEET_NAME = "RSVP";
 const TIMEZONE = "Asia/Colombo";
 
@@ -80,8 +80,8 @@ function getSheet_(sheetName, headers) {
     sheet.appendRow(headers);
     sheet.getRange(1, 1, 1, headers.length)
       .setFontWeight("bold")
-      .setBackground("#8C6420")
-      .setFontColor("#FDF8EC");
+      .setBackground("#B8913A")
+      .setFontColor("#FFFFFF");
     sheet.setFrozenRows(1);
     sheet.setColumnWidth(1, 170);
     sheet.setColumnWidth(2, 240);
