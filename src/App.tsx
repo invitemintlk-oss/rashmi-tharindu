@@ -42,9 +42,8 @@ const CALENDAR_LINK =
   "&location=" + encodeURIComponent(INVITATION.venue.mapQuery);
 
 const backgroundMusic = "/jayamangala-gatha.mp3";
-// TODO: point this at the Google Apps Script deployment for this couple's RSVP sheet.
 const googleScriptUrl =
-  "https://script.google.com/macros/s/AKfycbxDGwNwOKyfwZ73x6NsgzhNgOG5mEX4z9dKM1Kqt7V53z_Rw7RGocufZkhG8a-VRW-r/exec";
+  "https://script.google.com/macros/s/AKfycby-TYa6RL_NZqzQtXIrVFFVY2rHNznVOD9UGllmrItF9258XipXeg1J-GrHGV66OfW0DA/exec";
 
 const GOLD = "#B8913A";
 const GOLD_DEEP = "#8E6B22";
