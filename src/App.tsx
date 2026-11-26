@@ -440,7 +440,7 @@ export default function WeddingInvitation() {
             className="fixed inset-0 z-[150] flex items-center justify-center bg-white"
           >
             <video
-              src="/intro_video.mp4"
+              src="/sakura.mp4"
               autoPlay
               muted
               playsInline
