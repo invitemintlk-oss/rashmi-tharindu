@@ -187,19 +187,14 @@ function FloatingPetals() {
           }}
           transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: "linear" }}
         >
-          {p.id % 3 === 0 ? (
+          {p.id % 4 === 0 ? (
             /* single drifting petal */
-            <svg width={p.size * 0.7} height={p.size * 0.7} viewBox="0 0 24 24" fill="currentColor">
+            <svg width={p.size * 0.6} height={p.size * 0.6} viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 22C7 17 6.5 9 9.5 3.5L12 6l2.5-2.5C17.5 9 17 17 12 22Z" />
             </svg>
           ) : (
-            /* five-petal sakura blossom */
-            <svg width={p.size} height={p.size} viewBox="0 0 24 24">
-              {[0, 72, 144, 216, 288].map((r) => (
-                <path key={r} d="M12 12C9.2 9.4 9.4 4.6 10.9 2.6L12 3.9l1.1-1.3C14.6 4.6 14.8 9.4 12 12Z" fill="currentColor" transform={`rotate(${r} 12 12)`} />
-              ))}
-              <circle cx="12" cy="12" r="1.6" fill="#E0708F" />
-            </svg>
+            /* sakura blossom */
+            <img src="/images/sakura.webp" alt="" draggable="false" style={{ width: p.size * 1.25, height: "auto" }} />
           )}
         </motion.div>
       ))}
