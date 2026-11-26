@@ -7,7 +7,7 @@ const INVITATION = {
   bride: {
     short: "රශ්මි",
     full: "රූපසිංහ යාපා රශ්මි රසාංජි",
-    father: "රූපසිංහ යාපා ගාමිනී ලාල් මහතා",
+    father: "රූපසිංහ යාපා ගාමිණී ලාල් මහතා",
     mother: "යූ. රංජනී වීරසිංහ මහත්මිය",
   },
   groom: {
@@ -27,7 +27,7 @@ const INVITATION = {
   },
   poruwa: "පෙ.ව. 9.05",
   venue: {
-    name: "සින්ඩරෙල්ලා හොටෙල්",
+    name: "Cinderella Hotel",
     address: "පරකඩුව, ඇහැලියගොඩ",
     mapQuery: "Cinderella Hotel, Parakaduwa, Eheliyagoda, Sri Lanka",
   },
@@ -156,12 +156,12 @@ function FloatingPetals() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const isMobile = window.innerWidth < 768;
-    const colors = ["#D4AF37", "#E9D49A", "#C29A45", "#FFFFFF", "#F3E7C6"];
+    const colors = ["#F9C5D5", "#F7B2C8", "#FBD3DF", "#F29BB7", "#FDE2EA"];
     setPetals(
-      Array.from({ length: isMobile ? 10 : 18 }).map((_, i) => ({
+      Array.from({ length: isMobile ? 14 : 24 }).map((_, i) => ({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 7 + 7,
+        size: Math.random() * 10 + 12,
         rotation: Math.random() * 360,
         duration: Math.random() * 11 + 16,
         delay: Math.random() * 20,
@@ -176,15 +176,31 @@ function FloatingPetals() {
       {petals.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute drop-shadow-[0_2px_8px_rgba(142,107,34,0.35)]"
+          className="absolute drop-shadow-[0_2px_6px_rgba(214,98,138,0.3)]"
           style={{ color: p.color }}
           initial={{ x: `${p.x}vw`, y: "-10vh", rotate: p.rotation, opacity: 0 }}
-          animate={{ y: "110vh", x: `${p.x + p.drift}vw`, rotate: p.rotation + 540, opacity: [0, 0.9, 0.8, 0] }}
+          animate={{
+            y: "110vh",
+            x: [`${p.x}vw`, `${p.x + p.drift / 2 + 4}vw`, `${p.x + p.drift - 3}vw`, `${p.x + p.drift}vw`],
+            rotate: p.rotation + 360,
+            opacity: [0, 0.95, 0.9, 0],
+          }}
           transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: "linear" }}
         >
-          <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12,2C12,2 10,6 10,10C10,14 12,22 12,22C12,22 14,14 14,10C14,6 12,2 12,2Z" />
-          </svg>
+          {p.id % 3 === 0 ? (
+            /* single drifting petal */
+            <svg width={p.size * 0.7} height={p.size * 0.7} viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 22C7 17 6.5 9 9.5 3.5L12 6l2.5-2.5C17.5 9 17 17 12 22Z" />
+            </svg>
+          ) : (
+            /* five-petal sakura blossom */
+            <svg width={p.size} height={p.size} viewBox="0 0 24 24">
+              {[0, 72, 144, 216, 288].map((r) => (
+                <path key={r} d="M12 12C9.2 9.4 9.4 4.6 10.9 2.6L12 3.9l1.1-1.3C14.6 4.6 14.8 9.4 12 12Z" fill="currentColor" transform={`rotate(${r} 12 12)`} />
+              ))}
+              <circle cx="12" cy="12" r="1.6" fill="#E0708F" />
+            </svg>
+          )}
         </motion.div>
       ))}
     </div>
@@ -263,11 +279,14 @@ function Gallery() {
 
   return (
     <section className="relative w-full overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20">
-      <SectionTitle kicker="Captured Moments" title="සුන්දර මතක" />
-      <Reveal className="-mt-6 mb-10 text-center">
-        <p className="mx-auto max-w-[40ch] leading-[1.9]" style={{ color: MUTED }}>
-          අපගේ ආදර කතාවේ සුන්දර මොහොතවල් කිහිපයක් ඔබ සමඟ බෙදා ගනිමු.
-        </p>
+      <Reveal className="mb-10 text-center sm:mb-14">
+        <h2
+          className="gold-shimmer mx-auto max-w-[18ch] leading-tight"
+          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", fontWeight: 600, fontSize: "clamp(1.9rem,5.5vw,3rem)" }}
+        >
+          Beautiful memories of our engagement day
+        </h2>
+        <Divider />
       </Reveal>
 
       <div className="mx-auto max-w-5xl columns-2 gap-3 sm:gap-5 md:columns-3">
@@ -557,7 +576,7 @@ export default function WeddingInvitation() {
                   {[INVITATION.bride, INVITATION.groom].map((p, i) => (
                     <div key={p.short} className="flex flex-col items-center gap-3">
                       <p className="whitespace-pre-line text-[0.95rem] leading-[1.85] sm:text-base" style={{ color: "#5A4E3B" }}>
-                        {`${p.father}\nසහ\n${p.mother}\nයන දෙපළගේ\n${i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍රයා"}`}
+                        {`${p.father}\nසහ\n${p.mother}\nයන දෙපළගේ\n${i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"}`}
                       </p>
                       <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(1.05rem,3.6vw,1.45rem)" }}>
                         {p.full}
@@ -629,7 +648,7 @@ export default function WeddingInvitation() {
               <Reveal className="relative mx-auto max-w-xl text-center">
                 <span className="block text-5xl leading-none" style={{ color: GOLD_SOFT, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>“</span>
                 <p className="mt-2 text-[1.15rem] leading-[2] sm:text-[1.3rem]" style={{ color: "#5A4E3B" }}>
-                  ආදරය, විශ්වාසය සහ ගෞරවය අත්තිවාරම් කරගෙන
+                  ආදරය, විශ්වාසය සහ ගෞරවයෙන් යුක්තව
                   <br />
                   අප දෙදෙනා එක්ව අරඹන මේ නව ජීවන ගමනට
                   <br />
@@ -770,7 +789,7 @@ export default function WeddingInvitation() {
                 <div className="flex flex-col gap-4">
                   <div className="relative min-h-[300px] flex-1 overflow-hidden rounded-2xl" style={{ border: `1px solid ${GOLD_SOFT}`, boxShadow: "0 28px 56px -34px rgba(142,107,34,0.5)" }}>
                     <iframe
-                      title="සින්ඩරෙල්ලා හොටෙල් සිතියම"
+                      title="Cinderella Hotel map"
                       src={`https://maps.google.com/maps?q=${encodeURIComponent(INVITATION.venue.mapQuery)}&z=14&output=embed`}
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"

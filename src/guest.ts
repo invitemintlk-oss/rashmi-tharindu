@@ -31,7 +31,7 @@ export function buildInviteMessage(displayName: string, link: string): string {
 
 📅 2027 මැයි 13 බ්‍රහස්පතින්දා
 💍 පෝරුවේ චාරිත්‍රය පෙ.ව. 9.05 ට
-📍 සින්ඩරෙල්ලා හොටෙල්, පරකඩුව, ඇහැලියගොඩ
+📍 Cinderella Hotel, පරකඩුව, ඇහැලියගොඩ
 
 ආරාධනය සහ සියලු විස්තර පහත සබැඳියෙන් බලන්න 🌐:
 
