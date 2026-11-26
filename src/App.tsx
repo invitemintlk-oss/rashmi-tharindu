@@ -7,13 +7,13 @@ const INVITATION = {
   bride: {
     short: "රශ්මි",
     full: ["රූපසිංහ යාපා", "රශ්මි රසාංජි"],
-    father: "රූපසිංහ යාපා ගාමිණී ලාල් මහතා",
+    father: "රූපසිංහ යාපා ගාමිණී ලාල්",
     mother: "යූ. රංජනී වීරසිංහ මහත්මිය",
   },
   groom: {
     short: "තරිඳු",
     full: ["සමරසිංහ හෙට්ටිආරච්චිලාගේ", "තරිඳු සම්පත් හෙට්ටිආරච්චි"],
-    father: "එස්. එච්. ගාමිනී මහතා",
+    father: "එස්. එච්. ගාමිනී",
     mother: "කේ. එල්. රංජනී මහත්මිය",
   },
   date: {
@@ -570,12 +570,12 @@ export default function WeddingInvitation() {
                 <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-10">
                   {[INVITATION.bride, INVITATION.groom].map((p, i) => (
                     <div key={p.short} className="flex flex-col items-center gap-3">
-                      <p className="leading-[1.85]" style={{ color: "#5A4E3B", fontSize: "clamp(0.62rem,3.1vw,1rem)" }}>
-                        {[`${p.father} සහ`, p.mother, "යන දෙපළගේ", i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"].map((line) => (
+                      <p className="leading-[1.8]" style={{ color: "#5A4E3B", fontSize: "clamp(0.85rem,4.1vw,1.15rem)" }}>
+                        {[p.father, "මහතා සහ", p.mother, "යන දෙපළගේ", i === 0 ? "ආදරණීය දියණිය" : "ආදරණීය පුත්‍ර"].map((line) => (
                           <span key={line} className="block whitespace-nowrap">{line}</span>
                         ))}
                       </p>
-                      <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(0.72rem,3.3vw,1.4rem)" }}>
+                      <p className="mt-auto font-bold leading-snug" style={{ color: GOLD_DEEP, fontSize: "clamp(0.72rem,3.7vw,1.5rem)" }}>
                         {p.full.map((line) => (
                           <span key={line} className="block whitespace-nowrap">{line}</span>
                         ))}
